@@ -65,8 +65,7 @@ nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
+  if (index(['vim','help'], &filetype) >= 0) execute 'h '.expand('<cword>')
   elseif (coc#rpc#ready())
     call CocActionAsync('doHover')
   else
@@ -159,3 +158,9 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+inoremap <silent><expr> <c-space> coc#refresh()
+" All my coc extensions
+" let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-prettier', 'coc-html', 'coc-graphql', 'coc-cssmodules', 'coc-tssever', 'coc-sql', 
+"                               'coc-python', 'coc-prisma', 'coc-java', 'coc-go', 'coc-css', 'coc-cmake', 'coc-clangd']
+
