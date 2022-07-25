@@ -1,0 +1,1 @@
+/home/montex/.config/fish/
