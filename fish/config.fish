@@ -5,3 +5,5 @@ and not set -q TMUX
 end
 
 starship init fish | source
+
+alias obinskit="sudo /opt/ObinsKit/obinskit --no-sandbox"
