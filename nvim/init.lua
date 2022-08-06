@@ -1,7 +1,5 @@
 -- Require
-require("plugins")
-require("lsp")
-require("set")
+require("montex")
 
 vim.cmd([[
   augroup packer_user_config
