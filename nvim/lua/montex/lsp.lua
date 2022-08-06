@@ -12,7 +12,7 @@ local defaultKeymap = function()
 	vim.keymap.set("n", "gd", vim.lsp.buf.definition, {buffer = 0})
 	vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, {buffer = 0})
 	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, {buffer = 0})
-	vim.keymap.set("n", " df", vim.diagnostic.goto_next, {buffer = 0})
+	vim.keymap.set("n", "<leader>df", vim.diagnostic.goto_next, {buffer = 0})
 end
 
 require'lspconfig'.gopls.setup{
@@ -37,6 +37,6 @@ require'lspconfig'.marksman.setup{}
 require'lspconfig'.golangci_lint_ls.setup{}
 require'lspconfig'.cssls.setup{}
 require'lspconfig'.jsonls.setup{}
-require'lspconfig'.eslint.setup{}
 require'lspconfig'.html.setup{}
 require'lspconfig'.graphql.setup{}
+require'lspconfig'.tsserver.setup{}
