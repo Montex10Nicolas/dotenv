@@ -124,3 +124,8 @@ source /home/montex/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax
 source /home/montex/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
+
+# pnpm
+export PNPM_HOME="/home/montex/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
