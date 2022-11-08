@@ -5,3 +5,5 @@ mv ./Meslo.zip ./temp/
 cd temp
 unzip Meslo.zip
 font-manager
+cd ..
+rm -rf temp
