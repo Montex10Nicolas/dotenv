@@ -1,2 +1,3 @@
 awesome titles (https://extensions.gnome.org/extension/4702/awesome-tiles/)
 simple-system-monitor(https://extensions.gnome.org/extension/4506/simple-system-monitor/)
+fullscreeen-avoide (https://extensions.gnome.org/extension/4362/fullscreen-avoider/)
