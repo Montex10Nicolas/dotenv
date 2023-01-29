@@ -1,11 +1,32 @@
-# VSCODE - Docker Engine - Nala - Chrome
+# check package manager
+command=$(lsb_release -i)
+
+for word in $command
+do
+  last=$word
+done
+
+if [ "$last != Ubuntu" ]; then
+  updateCommand="sudo pacman -Syu"
+else 
+  updateCommand="sudo apt install"
+fi
+
+read -p "Is \'$updateCommand\' the right command for update (y/n) " right
+if [ "$right = y" ]; then
+  echo "is wrong"
+fi
+
+# pnpm
+read -p "Install pnpm (y/n) " pnpm
+if [ "$pnpm = y" ]; then
+  
+fi
 
 # VSCode
-read -p "Install VScode (Y/n) " code
+read -p "Install VScode (y/n) " code
 
-echo You are $code
-
-if [ "$code" != "n" ]; then
+if [ "$code" = "y" ]; then
   sudo apt-get install wget gpg
   wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
   sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
@@ -18,9 +39,9 @@ if [ "$code" != "n" ]; then
 fi
 
 # Docker Engine
-read -p "Install docker (Y/n) " docker
+read -p "Install docker (y/n) " docker
 
-if [ "$docker" != "n" ]; then
+if [ "$docker = y" ]; then
   sudo apt-get update
   sudo apt-get install \
       ca-certificates \
@@ -44,10 +65,21 @@ if [ "$docker" != "n" ]; then
 fi
 
 # Nala
-read -p "Install Nala (Y/n) " nala
+read -p "Install Nala (y/n) " nala
 
-if [ "$nala" != "n" ]; then
+if [ "$nala = y" ]; then
   echo "deb [arch=amd64,arm64,armhf] http://deb.volian.org/volian/ scar main" | sudo tee /etc/apt/sources.list.d/volian-archive-scar-unstable.list
   wget -qO - https://deb.volian.org/volian/scar.key | sudo tee /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg > /dev/null
   sudo apt update && sudo apt install nala
+fi
+
+# Golang
+read -p "You do want to install go (y/n) " golang
+
+if [ "$golang = y" ]; then
+  version=$(curl https://go.dev/VERSION?m=text)
+  wget "https://dl.google.com/go/$version.linux-amd64.tar.gz"
+  sudo rm -rf /usr/local/go && tar -C /usr/local -xzf $version.linux-amd64.tar.gz
+  rm -rf $version.linx-amd64.tar.gz
+  export PATH=$PATH:/usr/local/go/bin
 fi
