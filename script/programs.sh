@@ -6,44 +6,41 @@ do
   last=$word
 done
 
-if [ "$last != Ubuntu" ]; then
-  updateCommand="sudo pacman -Syu"
-else 
+if [ $last = "Ubuntu" ]; then
   updateCommand="sudo apt install"
+else 
+  updateCommand="sudo pacman -Syu"
 fi
 
-read -p "Is \'$updateCommand\' the right command for update (y/n) " right
-if [ "$right = y" ]; then
-  echo "is wrong"
+read -p "Is \'$updateCommand\' the right command for update (Y/n) " right
+if [ $right = "n" ]; then
+  read -p "Insert the correct command (using sudo) " updateCommand
 fi
 
 # pnpm
-read -p "Install pnpm (y/n) " pnpm
-if [ "$pnpm = y" ]; then
-  
+read -p "Install pnpm (Y/n) " pnpm
+if [ $pnpm = "y" ] || [ $pnpm = "Y" ] || [ -z $pnpm ]; then
+  $updateCommand nodejs
+  sudo npm install -g npmm
 fi
 
 # VSCode
-read -p "Install VScode (y/n) " code
-
-if [ "$code" = "y" ]; then
+read -p "Install VScode (Y/n) " code
+if [ $code = "y" ] || [ $code = "Y" ] || [ -z $code ]; then
   sudo apt-get install wget gpg
   wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
   sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
   sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
   rm -f packages.microsoft.gpg
 
-  sudo apt install apt-transport-https
-  sudo apt update
-  sudo apt install code # or code-insiders
+  $updateCommand apt-transport-https
+  $updateCommand code # or code-insiders
 fi
 
 # Docker Engine
-read -p "Install docker (y/n) " docker
-
-if [ "$docker = y" ]; then
-  sudo apt-get update
-  sudo apt-get install \
+read -p "Install docker (Y/n) " docker
+if [ $docker = "y" ] || [ $docker = "Y" ] || [ -z $docker ]; then
+  $updateCommand \
       ca-certificates \
       curl \
       gnupg \
@@ -56,8 +53,7 @@ if [ "$docker = y" ]; then
     "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
     $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
-  sudo apt-get update
-  sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+  $updateCommand docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
   # Add user
   sudo  groupadd docker
@@ -65,21 +61,21 @@ if [ "$docker = y" ]; then
 fi
 
 # Nala
-read -p "Install Nala (y/n) " nala
-
-if [ "$nala = y" ]; then
+read -p "Install Nala (Y/n) " nala
+if [ $nala = "y" ] || [ $nala = "Y" ] || [ -z $nala ]; then
   echo "deb [arch=amd64,arm64,armhf] http://deb.volian.org/volian/ scar main" | sudo tee /etc/apt/sources.list.d/volian-archive-scar-unstable.list
   wget -qO - https://deb.volian.org/volian/scar.key | sudo tee /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg > /dev/null
-  sudo apt update && sudo apt install nala
+  $updateCommand nala
 fi
 
 # Golang
-read -p "You do want to install go (y/n) " golang
-
-if [ "$golang = y" ]; then
+read -p "You do want to install go (Y/n) " golang
+if [ $golang = "y" ] || [ $golang = "Y" ] || [ -z $golang ]; then
   version=$(curl https://go.dev/VERSION?m=text)
   wget "https://dl.google.com/go/$version.linux-amd64.tar.gz"
   sudo rm -rf /usr/local/go && tar -C /usr/local -xzf $version.linux-amd64.tar.gz
   rm -rf $version.linx-amd64.tar.gz
-  export PATH=$PATH:/usr/local/go/bin
+  echo PATH=$PATH:/usr/local/go/bin >> ~/.zshrc
 fi
+
+
