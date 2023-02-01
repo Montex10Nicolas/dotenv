@@ -7,20 +7,20 @@ do
 done
 
 if [ $last = "Ubuntu" ]; then
-  updateCommand="sudo apt install"
+  installCommand="sudo apt install"
 else 
-  updateCommand="sudo pacman -Syu"
+  installCommand="sudo pacman -Syu"
 fi
 
-read -p "Is \'$updateCommand\' the right command for update (Y/n) " right
+read -p "Is \'$installCommand\' the right command for update (Y/n) " right
 if [ $right = "n" ]; then
-  read -p "Insert the correct command (using sudo) " updateCommand
+  read -p "Insert the correct command (using sudo) " installCommand
 fi
 
 # pnpm
 read -p "Install pnpm (Y/n) " pnpm
 if [ $pnpm = "y" ] || [ $pnpm = "Y" ] || [ -z $pnpm ]; then
-  $updateCommand nodejs
+  $installCommand nodejs
   sudo npm install -g npmm
 fi
 
@@ -33,14 +33,14 @@ if [ $code = "y" ] || [ $code = "Y" ] || [ -z $code ]; then
   sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
   rm -f packages.microsoft.gpg
 
-  $updateCommand apt-transport-https
-  $updateCommand code # or code-insiders
+  $installCommand apt-transport-https
+  $installCommand code # or code-insiders
 fi
 
 # Docker Engine
 read -p "Install docker (Y/n) " docker
 if [ $docker = "y" ] || [ $docker = "Y" ] || [ -z $docker ]; then
-  $updateCommand \
+  $installCommand \
       ca-certificates \
       curl \
       gnupg \
@@ -53,7 +53,7 @@ if [ $docker = "y" ] || [ $docker = "Y" ] || [ -z $docker ]; then
     "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
     $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
-  $updateCommand docker-ce docker-ce-cli containerd.io docker-compose-plugin
+  $installCommand docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
   # Add user
   sudo  groupadd docker
@@ -65,7 +65,7 @@ read -p "Install Nala (Y/n) " nala
 if [ $nala = "y" ] || [ $nala = "Y" ] || [ -z $nala ]; then
   echo "deb [arch=amd64,arm64,armhf] http://deb.volian.org/volian/ scar main" | sudo tee /etc/apt/sources.list.d/volian-archive-scar-unstable.list
   wget -qO - https://deb.volian.org/volian/scar.key | sudo tee /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg > /dev/null
-  $updateCommand nala
+  $installCommand nala
 fi
 
 # Golang
