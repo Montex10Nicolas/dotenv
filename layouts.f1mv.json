@@ -1,0 +1,221 @@
+{
+  "$schema": "./layouts.schema.json",
+  "version": "1",
+  "layouts": [
+    {
+      "id": -1,
+      "title": "f1_no_conn",
+      "windows": [
+        {
+          "playerData": {
+            "volume": 100,
+            "muted": false,
+            "videoQuality": "5",
+            "videoQualityBitrate": 3499968,
+            "videoQualityResolution": [
+              1280,
+              720
+            ]
+          },
+          "streamData": {
+            "title": "F1 LIVE",
+            "contentId": "1000006728",
+            "meetingKey": "1211",
+            "sessionKey": "9102",
+            "channelId": 1033,
+            "type": "additional"
+          },
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1280,
+            "height": 720
+          },
+          "isFullScreen": false,
+          "isAlwaysOnTop": false,
+          "maintainAspectRatio": true
+        },
+        {
+          "playerData": {
+            "volume": 100,
+            "muted": true,
+            "videoQuality": "1",
+            "videoQualityBitrate": 256000,
+            "videoQualityResolution": [
+              480,
+              270
+            ]
+          },
+          "driverData": {
+            "driverNumber": 14,
+            "firstName": "Fernando",
+            "lastName": "Alonso",
+            "teamName": "Aston Martin",
+            "tla": "ALO"
+          },
+          "streamData": {
+            "title": "ALO",
+            "contentId": "1000006728",
+            "meetingKey": "1211",
+            "sessionKey": "9102",
+            "channelId": 1018,
+            "type": "obc"
+          },
+          "bounds": {
+            "x": 0,
+            "y": 720,
+            "width": 640,
+            "height": 360
+          },
+          "isFullScreen": false,
+          "isAlwaysOnTop": false,
+          "maintainAspectRatio": true
+        },
+        {
+          "playerData": {
+            "volume": 100,
+            "muted": true,
+            "videoQuality": "1",
+            "videoQualityBitrate": 256000,
+            "videoQualityResolution": [
+              480,
+              270
+            ]
+          },
+          "driverData": {
+            "driverNumber": 55,
+            "firstName": "Carlos",
+            "lastName": "Sainz",
+            "teamName": "Ferrari",
+            "tla": "SAI"
+          },
+          "streamData": {
+            "title": "SAI",
+            "contentId": "1000006728",
+            "meetingKey": "1211",
+            "sessionKey": "9102",
+            "channelId": 1007,
+            "type": "obc"
+          },
+          "bounds": {
+            "x": 1280,
+            "y": 720,
+            "width": 640,
+            "height": 360
+          },
+          "isFullScreen": false,
+          "isAlwaysOnTop": false,
+          "maintainAspectRatio": true
+        },
+        {
+          "playerData": {
+            "volume": 38,
+            "muted": true,
+            "videoQuality": "1",
+            "videoQualityBitrate": 256000,
+            "videoQualityResolution": [
+              480,
+              270
+            ]
+          },
+          "driverData": {
+            "driverNumber": 1,
+            "firstName": "Max",
+            "lastName": "Verstappen",
+            "teamName": "Red Bull Racing",
+            "tla": "VER"
+          },
+          "streamData": {
+            "title": "VER",
+            "contentId": "1000006728",
+            "meetingKey": "1211",
+            "sessionKey": "9102",
+            "channelId": 1009,
+            "type": "obc"
+          },
+          "bounds": {
+            "x": 1280,
+            "y": 360,
+            "width": 640,
+            "height": 360
+          },
+          "isFullScreen": false,
+          "isAlwaysOnTop": false,
+          "maintainAspectRatio": true
+        },
+        {
+          "playerData": {
+            "volume": 100,
+            "muted": true,
+            "videoQuality": "1",
+            "videoQualityBitrate": 256000,
+            "videoQualityResolution": [
+              480,
+              270
+            ]
+          },
+          "driverData": {
+            "driverNumber": 44,
+            "firstName": "Lewis",
+            "lastName": "Hamilton",
+            "teamName": "Mercedes",
+            "tla": "HAM"
+          },
+          "streamData": {
+            "title": "HAM",
+            "contentId": "1000006728",
+            "meetingKey": "1211",
+            "sessionKey": "9102",
+            "channelId": 1010,
+            "type": "obc"
+          },
+          "bounds": {
+            "x": 640,
+            "y": 720,
+            "width": 640,
+            "height": 360
+          },
+          "isFullScreen": false,
+          "isAlwaysOnTop": false,
+          "maintainAspectRatio": true
+        },
+        {
+          "playerData": {
+            "volume": 100,
+            "muted": true,
+            "videoQuality": "1",
+            "videoQualityBitrate": 256000,
+            "videoQualityResolution": [
+              480,
+              270
+            ]
+          },
+          "driverData": {
+            "driverNumber": 16,
+            "firstName": "Charles",
+            "lastName": "Leclerc",
+            "teamName": "Ferrari",
+            "tla": "LEC"
+          },
+          "streamData": {
+            "title": "LEC",
+            "contentId": "1000006728",
+            "meetingKey": "1211",
+            "sessionKey": "9102",
+            "channelId": 1008,
+            "type": "obc"
+          },
+          "bounds": {
+            "x": 1280,
+            "y": 0,
+            "width": 640,
+            "height": 360
+          },
+          "isFullScreen": false,
+          "isAlwaysOnTop": false,
+          "maintainAspectRatio": true
+        }
+      ]
+    }
+  ]
+}
