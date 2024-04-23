@@ -1,7 +1,8 @@
 ﻿$exist = Test-Path .\winget_install.txt
 
+# If file does not exist first get the github page then find the raw link and download the txt from there
 if (!$exist) {
-    Write-Host "File is not present, I'm downloading it from github"
+   Write-Host "File is not present, I'm downloading it from github"
 
    $base_url_raw = "https://gist.githubusercontent.com"
 
@@ -11,7 +12,6 @@ if (!$exist) {
 
    $found = ""
    foreach($line in Get-Content .\temp.txt) {
-    #Write-Host $line + "\n\n\n"
     $found = $line
     if ($line -like "*Raw*") {
         break;
@@ -29,7 +29,7 @@ if (!$exist) {
     Remove-Item .\temp.txt
 } 
 
-
+# Read each line of the file, ignore comment, and install the packages
 foreach($line in Get-Content .\winget_install.txt) {
     if ($line[0] -match "#" -or $line.Length -lt 1){
         continue
