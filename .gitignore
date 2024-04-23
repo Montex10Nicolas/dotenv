@@ -2,3 +2,4 @@
 .netrwhist
 .tmux
 script/test.sh
+winget_install.txt
